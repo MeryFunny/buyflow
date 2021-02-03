@@ -3,6 +3,7 @@ import AgeStep from './AgeStep';
 import EmailStep from './EmailStep';
 import SummaryStep from './SummaryStep';
 import FullNameStep from './FullNameStep';
+import { STEP } from './steps.constants';
 
 interface BuyflowProps {
     productId: ProductIds,
@@ -17,7 +18,7 @@ const PRODUCT_IDS_TO_NAMES= {
 }
 
 const Buyflow: React.FC<BuyflowProps> = (props) => {
-    const [currentStep, setStep] = useState('fullName');
+    const [currentStep, setStep] = useState(STEP.FULL_NAME);
     const [collectedData, updateData] = useState({
         'firstName': '',
         'lastName': '',
@@ -26,17 +27,16 @@ const Buyflow: React.FC<BuyflowProps> = (props) => {
     });
     const getStepCallback = (nextStep:string) => (
         (data: any) => {
-            //newData = data.
             updateData({...collectedData, ...data});
             setStep(nextStep);
         }
     );
     return <>
         <h4>Buying {PRODUCT_IDS_TO_NAMES[props.productId]}</h4>
-        {(currentStep === 'fullName' && <FullNameStep cb={getStepCallback('email')} />)
-        ||  (currentStep === 'email' && <EmailStep cb={getStepCallback('age')} />)
-        || (currentStep === 'age' && <AgeStep  cb={getStepCallback('summary')} />)
-        || (currentStep === 'summary' && <SummaryStep collectedData={collectedData} />)
+        {(currentStep === STEP.FULL_NAME && <FullNameStep cb={getStepCallback(STEP.EMAIL)} />)
+        ||  (currentStep === STEP.EMAIL && <EmailStep cb={getStepCallback(STEP.AGE)} />)
+        || (currentStep === STEP.AGE && <AgeStep cb={getStepCallback(STEP.SUMMARY)} />)
+        || (currentStep === STEP.SUMMARY && <SummaryStep collectedData={collectedData} />)
         }
     </>;
 };
