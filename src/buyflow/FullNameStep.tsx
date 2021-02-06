@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import FromGroup from '../forms/FormGroup';
+import TextInput from '../forms/TextInput';
 
 interface FullNameStepProps {
     cb: (data: any) => void,
@@ -8,9 +10,20 @@ const FullNameStep: React.FC<FullNameStepProps> = (props) => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     return <>
-        <div>First name: <input type='text' onChange={({target: {value}}) => {setFirstName(value)}} value={firstName}></input></div>
-        <div>Last Name: <input type='text' onChange={({target: {value}}) => {setLastName(value)}} value={lastName}></input></div>
-        <button onClick={() => props.cb({ firstName, lastName })}>Next</button>
+        <FromGroup label={ 'First name:' }>
+            <TextInput
+                value={ firstName }
+                onChange={ setFirstName }
+            />
+        </FromGroup>
+
+        <FromGroup label={ 'Last name:' }>
+            <TextInput
+                value={ lastName }
+                onChange={ setLastName }
+            />
+        </FromGroup>
+        <button onClick={ () => props.cb({ firstName, lastName }) }>Next</button>
     </>;
 };
 

@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import NumberInput from '../forms/NumberInput';
+import FromGroup from '../forms/FormGroup';
 
 interface AgeStepProps {
     cb: (data: any) => void,
@@ -7,8 +9,13 @@ interface AgeStepProps {
 const AgeStep: React.FC<AgeStepProps> = (props) => {
     const [age, setAge] = useState(0);
     return <>
-        <div>Age: <input type='number' onChange={({target: {value}}) => {setAge(Number(value))}} value={age}></input></div>
-        <button onClick={() => props.cb({ age })}>Next</button>
+        <FromGroup label={ 'Age:' }>
+            <NumberInput
+                value={ age }
+                onChange={ setAge }
+            />
+        </FromGroup>
+        <button onClick={ () => props.cb({ age }) }>Next</button>
     </>;
 };
 

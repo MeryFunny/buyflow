@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import EmailInput from '../forms/EmailInput';
+import FromGroup from '../forms/FormGroup';
 
 interface EmailStepProps {
     cb: (data: any) => void,
@@ -7,8 +9,13 @@ interface EmailStepProps {
 const EmailStep: React.FC<EmailStepProps> = (props) => {
     const [email, setEmail] = useState('');
     return <>
-        <div>Email: <input type='email' onChange={({target: {value}}) => {setEmail(value)}} value={email}></input></div>
-        <button onClick={() => props.cb({ email })}>Next</button>
+        <FromGroup label={ 'Email:' }>
+            <EmailInput
+                value={ email }
+                onChange={ setEmail }
+            />
+        </FromGroup>
+        <button onClick={ () => props.cb({ email }) }>Next</button>
     </>;
 };
 

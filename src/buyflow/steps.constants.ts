@@ -3,4 +3,4 @@ export const STEP = {
     EMAIL: 'email',
     AGE: 'age',
     SUMMARY: 'summary'
-}
+};
