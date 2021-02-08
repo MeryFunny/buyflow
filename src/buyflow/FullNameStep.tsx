@@ -2,23 +2,30 @@ import React, { useState } from 'react';
 import FromGroup from '../forms/FormGroup';
 import TextInput from '../forms/TextInput';
 import { VALIDATOR_TYPE } from '../constants/validation.constants';
+import { getDefaultFormState } from '../utils/form.utils';
 
 interface FullNameStepProps {
     cb: (data: any) => void,
 }
 
+const FIRST_NAME = 'firstName';
+const LAST_NAME = 'lastName';
+
 const FullNameStep: React.FC<FullNameStepProps> = (props) => {
     const [formData, setFormData] = useState({ firstName: '', lastName: '' });
-    const [formValidation, setFormValidation] = useState({ firstName: false, lastName: false });
+    const [formState, setFormState] = useState(getDefaultFormState([FIRST_NAME, LAST_NAME]));
 
-    const handleFirstNameChange = (value: string, isValid: boolean) => {
-        setFormData({ ...formData, firstName: value });
-        setFormValidation({ ...formValidation, firstName: isValid });
+    const handleChange = (fieldName: string) => {
+        return (value: string, isValid: boolean) => {
+            setFormData({ ...formData, [fieldName]: value });
+            setFormState({ ...formState, [fieldName]: { ...formState.firstName, isValid } });
+        };
     };
 
-    const handleLastNameChange = (value: string, isValid: boolean) => {
-        setFormData({ ...formData, lastName: value });
-        setFormValidation({ ...formValidation, lastName: isValid });
+    const handleBlur = (fieldName: string) => {
+        return (isDirty: boolean) => {
+            setFormState({ ...formState, [fieldName]: { ...formState.firstName, isDirty } });
+        };
     };
 
     return <>
@@ -26,7 +33,8 @@ const FullNameStep: React.FC<FullNameStepProps> = (props) => {
             <TextInput
                 validators={ [VALIDATOR_TYPE.IS_REQUIRED] }
                 value={ formData.firstName }
-                onChange={ handleFirstNameChange }
+                onBlur={ handleBlur(FIRST_NAME) }
+                onChange={ handleChange(FIRST_NAME) }
             />
         </FromGroup>
 
@@ -34,11 +42,12 @@ const FullNameStep: React.FC<FullNameStepProps> = (props) => {
             <TextInput
                 validators={ [VALIDATOR_TYPE.IS_REQUIRED] }
                 value={ formData.lastName }
-                onChange={ handleLastNameChange }
+                onBlur={ handleBlur(LAST_NAME) }
+                onChange={ handleChange(LAST_NAME) }
             />
         </FromGroup>
         <button
-            disabled={ !formValidation.lastName || !formValidation.firstName }
+            disabled={ !formState.lastName.isValid || !formState.firstName.isValid }
             onClick={ () => props.cb(formData) }>
             Next
         </button>

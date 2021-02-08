@@ -5,6 +5,7 @@ import Input from './Input';
 interface TextInputProps {
     value: string,
     validators: string[],
+    onBlur: (isDirty: boolean) => void;
     onChange: (value: string, isValid: boolean) => void,
 }
 
