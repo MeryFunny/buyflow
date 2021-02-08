@@ -1,10 +1,11 @@
 import React from 'react';
 import { VALIDATOR_TYPE } from '../constants/validation.constants';
-import FlowStep from '../flow/FlowStep';
+import FlowStep from './FlowStep';
 import { FIELD_TYPE } from '../forms/fieldType.constants';
+import { IFormData } from '../forms/IFormData';
 
 interface AgeStepProps {
-    onNext: (data: any) => void,
+    onNext: (data: IFormData) => void,
 }
 
 const AgeStep: React.FC<AgeStepProps> = ({ onNext }) => {

@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import FromGroup from '../forms/FormGroup';
 import { getDefaultFormData, getDefaultFormState, getInputComponentByType } from '../utils/form.utils';
 import { IFormGroup } from '../forms/IFormGroup';
+import { IFormData } from '../forms/IFormData';
 
 interface IFlowStepProps {
     formGroupConfigs: IFormGroup[],
-    onNext: (data: any) => void,
+    onNext: (data: IFormData) => void,
 }
 
 const FlowStep: React.FC<IFlowStepProps> = ({ formGroupConfigs, onNext }) => {

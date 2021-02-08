@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 
-
 const Stepper = (props: any) => {
     const [stage, setStage] = useState(props.stage || 1);
 

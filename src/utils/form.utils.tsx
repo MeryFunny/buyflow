@@ -3,6 +3,7 @@ import TextInput from '../forms/TextInput';
 import NumberInput from '../forms/NumberInput';
 import EmailInput from '../forms/EmailInput';
 import { IFormGroup } from '../forms/IFormGroup';
+import { IFormData } from '../forms/IFormData';
 
 const INPUT_BY_TYPE = {
     [FIELD_TYPE.TEXT]: TextInput,
@@ -12,10 +13,6 @@ const INPUT_BY_TYPE = {
 
 interface IFormState {
     [key: string]: { isValid: boolean, isDirty: boolean }
-}
-
-interface IFormData {
-    [key: string]: number | string
 }
 
 export const getDefaultFormState = (formGroupConfigs: IFormGroup[]) => {
