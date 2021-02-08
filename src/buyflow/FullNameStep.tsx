@@ -18,13 +18,13 @@ const FullNameStep: React.FC<FullNameStepProps> = ({ onNext }) => {
     const handleChange = (fieldName: string) => {
         return (value: string, isValid: boolean) => {
             setFormData({ ...formData, [fieldName]: value });
-            setFormState({ ...formState, [fieldName]: { ...formState.firstName, isValid } });
+            setFormState({ ...formState, [fieldName]: { ...formState[fieldName], isValid } });
         };
     };
 
     const handleBlur = (fieldName: string) => {
         return (isDirty: boolean) => {
-            setFormState({ ...formState, [fieldName]: { ...formState.firstName, isDirty } });
+            setFormState({ ...formState, [fieldName]: { ...formState[fieldName], isDirty } });
         };
     };
 

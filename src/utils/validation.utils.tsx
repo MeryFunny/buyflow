@@ -5,7 +5,7 @@ interface Validator {
 }
 
 const validationIsRequired = (value: any): boolean => {
-    return !!value;
+    return !!value.trim();
 };
 
 const VALIDATORS: Validator = {
