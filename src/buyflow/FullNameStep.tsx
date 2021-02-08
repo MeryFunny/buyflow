@@ -5,13 +5,13 @@ import { VALIDATOR_TYPE } from '../constants/validation.constants';
 import { getDefaultFormState } from '../utils/form.utils';
 
 interface FullNameStepProps {
-    cb: (data: any) => void,
+    onNext: (data: any) => void,
 }
 
 const FIRST_NAME = 'firstName';
 const LAST_NAME = 'lastName';
 
-const FullNameStep: React.FC<FullNameStepProps> = (props) => {
+const FullNameStep: React.FC<FullNameStepProps> = ({ onNext }) => {
     const [formData, setFormData] = useState({ firstName: '', lastName: '' });
     const [formState, setFormState] = useState(getDefaultFormState([FIRST_NAME, LAST_NAME]));
 
@@ -48,7 +48,7 @@ const FullNameStep: React.FC<FullNameStepProps> = (props) => {
         </FromGroup>
         <button
             disabled={ !formState.lastName.isValid || !formState.firstName.isValid }
-            onClick={ () => props.cb(formData) }>
+            onClick={ () => onNext(formData) }>
             Next
         </button>
     </>;

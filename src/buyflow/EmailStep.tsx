@@ -5,10 +5,10 @@ import { VALIDATOR_TYPE } from '../constants/validation.constants';
 import { getDefaultFormState } from '../utils/form.utils';
 
 interface EmailStepProps {
-    cb: (data: any) => void,
+    onNext: (data: any) => void,
 }
 
-const EmailStep: React.FC<EmailStepProps> = (props) => {
+const EmailStep: React.FC<EmailStepProps> = ({ onNext }) => {
     const [formData, setFormData] = useState({ email: '' });
     const [formState, setFormState] = useState(getDefaultFormState(['email']));
 
@@ -30,7 +30,7 @@ const EmailStep: React.FC<EmailStepProps> = (props) => {
                 onChange={ handleEmailChange }
             />
         </FromGroup>
-        <button disabled={ !formState.email.isValid } onClick={ () => props.cb(formData) }>Next</button>
+        <button disabled={ !formState.email.isValid } onClick={ () => onNext(formData) }>Next</button>
     </>;
 };
 

@@ -5,10 +5,10 @@ import { VALIDATOR_TYPE } from '../constants/validation.constants';
 import { getDefaultFormState } from '../utils/form.utils';
 
 interface AgeStepProps {
-    cb: (data: any) => void,
+    onNext: (data: any) => void,
 }
 
-const AgeStep: React.FC<AgeStepProps> = (props) => {
+const AgeStep: React.FC<AgeStepProps> = ({ onNext }) => {
     const [formData, setFormData] = useState({ age: 0 });
     const [formState, setFormState] = useState(getDefaultFormState(['age']));
 
@@ -30,7 +30,7 @@ const AgeStep: React.FC<AgeStepProps> = (props) => {
                 onChange={ handleAgeChange }
             />
         </FromGroup>
-        <button disabled={ !formState?.age?.isValid } onClick={ () => props.cb(formData) }>Next</button>
+        <button disabled={ !formState?.age?.isValid } onClick={ () => onNext(formData) }>Next</button>
     </>;
 };
 
