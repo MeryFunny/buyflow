@@ -2,15 +2,9 @@ import React from 'react';
 import { FIELD_TYPE } from './fieldType.constants';
 import Input from './Input';
 import { VALIDATOR_TYPE } from '../constants/validation.constants';
+import { IInputProps } from './IInputPtops';
 
-interface EmailInputProps {
-    value: string,
-    validators: string[],
-    onBlur: (isDirty: boolean) => void;
-    onChange: (value: string, isValid: boolean) => void,
-}
-
-const EmailInput: React.FC<EmailInputProps> = ({ validators, ...props }) => {
+const EmailInput: React.FC<IInputProps> = ({ validators, ...props }) => {
     return (
         <Input
             type={ FIELD_TYPE.EMAIL }

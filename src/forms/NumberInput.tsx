@@ -1,15 +1,10 @@
 import React from 'react';
 import { FIELD_TYPE } from './fieldType.constants';
 import Input from './Input';
+import { IInputProps } from './IInputPtops';
 
-interface NumberInputProps {
-    value: number,
-    validators: string[],
-    onBlur: (isDirty: boolean) => void;
-    onChange: (value: number, isValid: boolean) => void,
-}
 
-const NumberInput: React.FC<NumberInputProps> = ({ onChange, ...props }) => {
+const NumberInput: React.FC<IInputProps> = ({ onChange, ...props }) => {
     const handleChange = (value: string, isValid: boolean) => {
         onChange(Number(value), isValid);
     };

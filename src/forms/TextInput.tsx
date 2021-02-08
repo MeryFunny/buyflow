@@ -1,15 +1,9 @@
 import React from 'react';
 import { FIELD_TYPE } from './fieldType.constants';
 import Input from './Input';
+import { IInputProps } from './IInputPtops';
 
-interface TextInputProps {
-    value: string,
-    validators: string[],
-    onBlur: (isDirty: boolean) => void;
-    onChange: (value: string, isValid: boolean) => void,
-}
-
-const TextInput: React.FC<TextInputProps> = (props) => {
+const TextInput: React.FC<IInputProps> = (props) => {
     return (
         <Input type={ FIELD_TYPE.TEXT } { ...props }/>
 
