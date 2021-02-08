@@ -4,12 +4,13 @@ import Input from './Input';
 
 interface NumberInputProps {
     value: number,
-    onChange: (value: number) => void,
+    validators: string[],
+    onChange: (value: number, isValid: boolean) => void,
 }
 
 const NumberInput: React.FC<NumberInputProps> = ({ onChange, ...props }) => {
-    const handleChange = (value: string) => {
-        onChange(Number(value));
+    const handleChange = (value: string, isValid: boolean) => {
+        onChange(Number(value), isValid);
     };
 
     return (

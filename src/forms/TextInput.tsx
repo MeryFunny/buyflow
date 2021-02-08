@@ -4,7 +4,8 @@ import Input from './Input';
 
 interface TextInputProps {
     value: string,
-    onChange: (value: string) => void,
+    validators: string[],
+    onChange: (value: string, isValid: boolean) => void,
 }
 
 const TextInput: React.FC<TextInputProps> = (props) => {
