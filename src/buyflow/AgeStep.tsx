@@ -14,6 +14,7 @@ const AgeStep: React.FC<AgeStepProps> = ({ onNext }) => {
             fieldName: 'age',
             defaultValue: '',
             label: 'Age:',
+            placeholder: 'Please enter age',
             fieldType: FIELD_TYPE.NUMBER,
             validators: [VALIDATOR_TYPE.IS_REQUIRED, VALIDATOR_TYPE.IS_POSITIVE]
         }

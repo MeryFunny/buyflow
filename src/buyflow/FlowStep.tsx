@@ -42,6 +42,7 @@ const FlowStep: React.FC<IFlowStepProps> = ({ formGroupConfigs, onNext }) => {
                     <InputComponent
                         validators={ formGroup.validators }
                         value={ formData[formGroup.fieldName] }
+                        placeholder={ formGroup.placeholder }
                         onBlur={ handleBlur(formGroup.fieldName) }
                         onChange={ handleChange(formGroup.fieldName) }
                     />

@@ -14,6 +14,7 @@ const EmailStep: React.FC<EmailStepProps> = ({ onNext }) => {
             fieldName: 'email',
             defaultValue: '',
             label: 'Email:',
+            placeholder: 'Please enter email',
             fieldType: FIELD_TYPE.EMAIL,
             validators: [VALIDATOR_TYPE.IS_REQUIRED]
         }

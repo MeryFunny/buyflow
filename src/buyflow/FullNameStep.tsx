@@ -14,6 +14,7 @@ const FullNameStep: React.FC<FullNameStepProps> = ({ onNext }) => {
             fieldName: 'firstName',
             defaultValue: '',
             label: 'First name:',
+            placeholder: 'Please enter first name',
             fieldType: FIELD_TYPE.TEXT,
             validators: [VALIDATOR_TYPE.IS_REQUIRED]
         },
@@ -21,6 +22,7 @@ const FullNameStep: React.FC<FullNameStepProps> = ({ onNext }) => {
             fieldName: 'lastName',
             defaultValue: '',
             label: 'Last name:',
+            placeholder: 'Please enter last name',
             fieldType: FIELD_TYPE.TEXT,
             validators: [VALIDATOR_TYPE.IS_REQUIRED]
         }
