@@ -1,0 +1,37 @@
+.button {
+    padding: 10px 5px;
+    outline: none;
+    min-width: 90px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 3px;
+    border-width: 1px;
+    border-color: rgb(0, 61, 43);
+    color: rgb(0, 61, 43);
+    transition: border-color, color 200ms linear 0s;
+}
+
+.button:hover {
+    border-color: rgb(2, 99, 71);
+    color: rgb(2, 99, 71);
+    transition: border-color, color 200ms linear 0s;
+}
+
+.button.button-primary {
+    background-color: rgb(0, 61, 43);
+    color: white;
+    border: none;
+}
+
+button:disabled,.button:disabled:hover, .button.button-primary:disabled, .button.button-primary:disabled:hover {
+    cursor: not-allowed;
+    background-color: gray;
+    color: lightgray;
+    border: none;
+}
+
+.button.button-primary:disabled:hover {
+    background-color: gray;
+    color: lightgray;
+    border: none;
+}

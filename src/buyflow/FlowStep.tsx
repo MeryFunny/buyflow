@@ -3,6 +3,7 @@ import FromGroup from '../forms/FormGroup';
 import { getDefaultFormData, getDefaultFormState, getInputComponentByType } from '../utils/form.utils';
 import { IFormGroup } from '../forms/IFormGroup';
 import { IFormData } from '../forms/IFormData';
+import { CSS_CLASSES } from '../styles/cssClasses.contants';
 
 interface IFlowStepProps {
     formGroupConfigs: IFormGroup[],
@@ -53,6 +54,7 @@ const FlowStep: React.FC<IFlowStepProps> = ({ formGroupConfigs, onNext }) => {
     return <>
         { renderFormGroups() }
         <button
+            className={ `${ CSS_CLASSES.BUTTON } ${ CSS_CLASSES.BUTTON_PRIMARY }`}
             disabled={ !isFormValid() }
             onClick={ () => onNext(formData) }>
             Next
