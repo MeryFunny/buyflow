@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { CSS_CLASSES } from '../styles/cssClasses.contants';
 
 interface SummaryStepProps {
     collectedData: {
@@ -16,7 +17,7 @@ const SummaryStep: React.FC<SummaryStepProps> = (props) => {
         <div>Last Name: { props.collectedData.lastName }</div>
         <div>Email: { props.collectedData.email }</div>
         <div>Age: { props.collectedData.age }</div>
-        <div><Link to='/purchased=dev_ins'>Purchase</Link></div>
+        <div><Link className={ CSS_CLASSES.LINK } to='/purchased=dev_ins'>Purchase</Link></div>
     </>;
 };
 

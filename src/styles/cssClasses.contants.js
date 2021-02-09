@@ -4,4 +4,5 @@ export const CSS_CLASSES = {
   INPUT: 'input',
   BUTTON: 'button',
   BUTTON_PRIMARY: 'button-primary',
+  LINK: 'link'
 }

@@ -10,6 +10,7 @@ import {
   Link,
 } from "react-router-dom";
 import Buyflow, { ProductIds } from './buyflow/Buyflow';
+import { CSS_CLASSES } from './styles/cssClasses.contants';
 
 const App = () => {
   return (
@@ -24,7 +25,7 @@ const App = () => {
           </Route>
           <Route path="/">
           <p>Welcome to Getsafe's Developer Insurance</p>
-          <Link to="/buy/insurance_dev">Get started!</Link>
+          <Link className={ CSS_CLASSES.LINK } to="/buy/insurance_dev">Get started!</Link>
           </Route>
         </Switch>
       </div>
