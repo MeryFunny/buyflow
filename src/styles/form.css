@@ -28,7 +28,16 @@
     border-color: lightgray;
 }
 
+.form-group .input.intent-danger {
+    transition: border-color 200ms linear 0s;
+    border-color: brown;
+}
+
 .form-group .input:focus {
     border-color: rgb(0, 61, 43);
-    border-width: 1px;
+}
+
+.form-group .input.intent-danger:focus {
+    transition: border-color 200ms linear 0s;
+    border-color: red;
 }

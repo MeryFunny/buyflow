@@ -5,5 +5,6 @@ export const CSS_CLASSES = {
   BUTTON: 'button',
   BUTTON_PRIMARY: 'button-primary',
   LINK: 'link',
-  MARGIN_BOTTOM_20: 'margin-bottom-20'
+  MARGIN_BOTTOM_20: 'margin-bottom-20',
+  INTENT_DANGER: 'intent-danger'
 }

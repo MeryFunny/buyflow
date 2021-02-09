@@ -6,12 +6,13 @@ interface InputProps {
     value: any,
     type: string,
     placeholder: string,
+    intent: string,
     validators: string[],
     onBlur: (isDirty: boolean) => void;
     onChange: (value: any, isValid: boolean) => void,
 }
 
-const Input: React.FC<InputProps> = ({ value, type, placeholder, validators, onBlur, onChange }) => {
+const Input: React.FC<InputProps> = ({ value, type, placeholder, intent, validators, onBlur, onChange }) => {
     const handleFieldChange = ({ target: { value } }: React.ChangeEvent<HTMLInputElement>) => {
         return onChange(value, validate(value, validators));
     };
@@ -22,7 +23,7 @@ const Input: React.FC<InputProps> = ({ value, type, placeholder, validators, onB
 
     return (
         <input
-            className={ CSS_CLASSES.INPUT }
+            className={ `${CSS_CLASSES.INPUT} ${ intent }` }
             type={ type }
             value={ value }
             placeholder={ placeholder }

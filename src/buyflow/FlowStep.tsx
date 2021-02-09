@@ -21,6 +21,10 @@ const FlowStep: React.FC<IFlowStepProps> = ({ formGroupConfigs, onNext }) => {
         }, true);
     };
 
+    const getIntent = (fieldName: string) => {
+        return !formState[fieldName].isValid && formState[fieldName].isDirty ? CSS_CLASSES.INTENT_DANGER : ''
+    }
+
     const handleChange = (fieldName: string) => {
         return (value: string | number, isValid: boolean) => {
             setFormData({ ...formData, [fieldName]: value });
@@ -40,6 +44,7 @@ const FlowStep: React.FC<IFlowStepProps> = ({ formGroupConfigs, onNext }) => {
             return (
                 <FromGroup label={ formGroup.label } key={ formGroup.fieldName }>
                     <InputComponent
+                        intent={ getIntent(formGroup.fieldName)}
                         validators={ formGroup.validators }
                         value={ formData[formGroup.fieldName] }
                         placeholder={ formGroup.placeholder }
