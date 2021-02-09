@@ -1,0 +1,15 @@
+.link {
+    text-decoration: none;
+    color: rgb(0, 61, 43);
+    border: 1px solid rgb(0, 61, 43);
+    border-radius: 3px;
+    padding: 10px 15px;
+    position: relative;
+    transition: all 1s;
+    overflow: hidden;
+}
+
+.link:hover {
+    color: white;
+    background-color: rgb(0, 61, 43);
+}

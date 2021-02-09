@@ -2,37 +2,56 @@ import React, { useState } from 'react';
 import AgeStep from './AgeStep';
 import EmailStep from './EmailStep';
 import SummaryStep from './SummaryStep';
+import FullNameStep from './FullNameStep';
+import Stepper from '../stepper/Stepper';
+import Step from '../stepper/Step';
+import Steps from '../stepper/Steps';
 
 interface BuyflowProps {
     productId: ProductIds,
-};
+}
 
 export enum ProductIds {
     devIns = 'dev_ins'
 }
 
-const PRODUCT_IDS_TO_NAMES= {
+const PRODUCT_IDS_TO_NAMES = {
     [ProductIds.devIns]: 'Developer Insurance',
-}
+};
 
 const Buyflow: React.FC<BuyflowProps> = (props) => {
-    const [currentStep, setStep] = useState('email');
     const [collectedData, updateData] = useState({
-        'email': '',
-        'age': 0,
+        firstName: '',
+        lastName: '',
+        email: '',
+        age: 0,
     });
-    const getStepCallback = (nextStep:string) => (
-        (field: string, value: any) => {
-            updateData({...collectedData, [field]: value});
-            setStep(nextStep);
-        }
-    );
+
+    const handleNext = (data: any, handleClick: any) => {
+        updateData({ ...collectedData, ...data })
+        handleClick()
+    };
+
     return <>
-        <h4>Buying {PRODUCT_IDS_TO_NAMES[props.productId]}</h4>
-        {(currentStep === 'email' && <EmailStep cb={getStepCallback('age')} />)
-        || (currentStep === 'age' && <AgeStep  cb={getStepCallback('summary')} />)
-        || (currentStep === 'summary' && <SummaryStep collectedData={collectedData} />)        
-        }
+        <h4>Buying { PRODUCT_IDS_TO_NAMES[props.productId] }</h4>
+        <Stepper stage={1}>
+            { (stage: number, handleClick: any) => (
+                <Steps stage={ stage } handleClick={ handleClick }>
+                    <Step stage={ stage } num={1}>
+                        <FullNameStep onNext={ (data: any) => handleNext(data, handleClick) }/>
+                    </Step>
+                    <Step stage={ stage } num={2}>
+                        <EmailStep onNext={ (data: any) => handleNext(data, handleClick) }/>
+                    </Step>
+                    <Step stage={ stage } num={3}>
+                        <AgeStep onNext={ (data: any) => handleNext(data, handleClick) }/>
+                    </Step>
+                    <Step stage={ stage } num={4}>
+                        <SummaryStep collectedData={ collectedData }/>
+                    </Step>
+                </Steps>
+            )}
+        </Stepper>
     </>;
 };
 
