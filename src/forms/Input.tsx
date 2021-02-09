@@ -1,5 +1,6 @@
 import React from 'react';
 import { validate } from '../utils/validation.utils';
+import { CSS_CLASSES } from '../styles/cssClasses.contants';
 
 interface InputProps {
     value: any,
@@ -20,6 +21,7 @@ const Input: React.FC<InputProps> = ({ value, type, validators, onBlur, onChange
 
     return (
         <input
+            className={ CSS_CLASSES.INPUT }
             type={ type }
             value={ value }
             onBlur={ handleFieldBlur }

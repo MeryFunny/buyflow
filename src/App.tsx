@@ -1,6 +1,8 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import './styles/index';
+
 import {
   BrowserRouter as Router,
   Switch,

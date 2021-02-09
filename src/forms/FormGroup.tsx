@@ -1,13 +1,14 @@
 import React from 'react';
+import { CSS_CLASSES } from '../styles/cssClasses.contants';
 
 interface FromGroupProps {
     label: string
 }
 
-const FromGroup: React.FC<FromGroupProps> = ({ children,label}) => {
+const FromGroup: React.FC<FromGroupProps> = ({ children, label }) => {
     return (
-        <div>
-            { label && (<label>{ label }</label>) }
+        <div className={ CSS_CLASSES.FORM_GROUP }>
+            { label && (<label className={ CSS_CLASSES.FORM_GROUP_LABEL }>{ label }</label>) }
             <div> { children }</div>
         </div>
     );
